@@ -1,0 +1,53 @@
+<div class="container">
+	<div class="form login">
+		<span class="title">Login</span>
+		<form novalidate action="/account/login" id="login-form" method="POST">
+			<div class="input-field">
+				<input
+					type="text"
+					name="email"
+					id="email"
+					value="<%= email %>"
+					placeholder="Enter your email"
+					required
+				/>
+				<i class="uil uil-envelope icon"></i>
+			</div>
+			<div class="error-message email">Please enter your email</div>
+			<div class="input-field">
+				<input
+					type="password"
+					name="password"
+					id="password"
+					value="<%= password %>"
+					placeholder="Enter your password"
+					required
+				/>
+				<i class="uil uil-lock icon"></i>
+				<i class="uil uil-eye-slash toggle-pwd"></i>
+			</div>
+			<div class="error-message pwd">Please enter your password</div>
+			<div class="checkbox-text">
+				<div class="checkbox-content">
+					<input type="checkbox" name="remember" id="remember-checkbox" />
+					<label for="remember-checkbox" class="text">Remember me</label>
+				</div>
+				<a href="#" class="text">Forgot password?</a>
+			</div>
+			<% if (error) { %>
+			<div class="server-error-msg">
+				<p><%= error %></p>
+			</div>
+			<% } %>
+			<div class="input-field button">
+				<input type="submit" value="Login" id="btn-login" required />
+			</div>
+			<div class="signup-link-field">
+				<span class="text">
+					Not a member?
+					<a href="/account/register" class="text signup-link-text">Signup</a>
+				</span>
+			</div>
+		</form>
+	</div>
+</div>

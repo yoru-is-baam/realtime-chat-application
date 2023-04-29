@@ -1,0 +1,133 @@
+.users {
+	padding: 25px 30px;
+
+	header,
+	.users-list a {
+		@include flex-center-space-between;
+		padding-bottom: 20px;
+		border-bottom: 1px solid #e6e6e6;
+
+		.logout {
+			color: $whiteColor;
+			font-size: $inputFontSize;
+			background: $primaryColor;
+			padding: 7px 15px;
+			border-radius: 5px;
+		}
+	}
+
+	.content {
+		display: flex;
+
+		.details {
+			margin-left: 15px;
+
+			span {
+				color: #333;
+				@include font-size-weight(18px, 500);
+			}
+
+			p {
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+				width: 165px;
+			}
+		}
+
+		img {
+			@include width-height(50px, 50px);
+		}
+	}
+
+	.search {
+		position: relative;
+		margin: 20px 0;
+		@include flex-center-space-between;
+
+		.text {
+			font-size: 18px;
+		}
+
+		input {
+			position: absolute;
+			@include width-height(calc(100% - 50px), 42px);
+			border: 1px solid $borderColor;
+			padding: 0 13px;
+			font-size: $inputFontSize;
+			border-radius: 5px 0 0 5px;
+			outline: none;
+			opacity: 0;
+			pointer-events: none;
+			transition: all 0.3s ease;
+
+			&.active {
+				opacity: 1;
+				pointer-events: auto;
+			}
+		}
+
+		button {
+			@include width-height(47px, 42px);
+			border: none;
+			outline: none;
+			color: $primaryColor;
+			background-color: $whiteColor;
+			cursor: pointer;
+			font-size: 20px;
+			border-radius: 0 5px 5px 0;
+			transition: all 0.2s ease;
+
+			&.active {
+				color: $whiteColor;
+				background-color: $primaryColor;
+
+				i {
+					&::before {
+						content: "\e9b3";
+					}
+				}
+			}
+		}
+	}
+
+	.users-list {
+		max-height: 350px;
+		overflow-y: auto;
+
+		&::-webkit-scrollbar {
+			width: 0px;
+		}
+
+		a {
+			padding-top: 20px;
+			padding-right: 20px;
+			color: #000;
+			border-bottom-color: #f1f1f1;
+
+			&:last-child {
+				border: none;
+			}
+
+			.content {
+				align-items: center;
+				color: #67676a;
+
+				img {
+					@include width-height(40px, 40px);
+				}
+			}
+
+			.status-dot {
+				background-color: #468869;
+				border-radius: 50%;
+				@include width-height(10px, 10px);
+				display: inline-block;
+
+				&.offline {
+					color: $borderColor;
+				}
+			}
+		}
+	}
+}

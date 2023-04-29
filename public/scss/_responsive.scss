@@ -1,0 +1,36 @@
+@media (max-width: 584px) {
+	.container {
+		max-width: 100%;
+		border-radius: 0;
+
+		.form {
+			.title {
+				font-size: 23px;
+
+				&::before {
+					bottom: -5px;
+					height: 2px;
+				}
+			}
+
+			.input-field {
+				input {
+					font-size: 14px;
+				}
+
+				i {
+					font-size: 19px;
+				}
+			}
+		}
+
+		.chat-area {
+			header {
+				.arrow-icon {
+					font-size: 35px;
+					padding-right: 0;
+				}
+			}
+		}
+	}
+}

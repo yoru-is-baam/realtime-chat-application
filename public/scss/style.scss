@@ -1,0 +1,182 @@
+// Google Font Import
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+@import "variables";
+@import "mixins";
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Poppins", sans-serif;
+}
+
+body {
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: $primaryColor;
+	background-image: linear-gradient(
+		43deg,
+		$secondaryColor 0%,
+		$primaryColor 46%,
+		$tertiaryColor 100%
+	);
+}
+
+a {
+	text-decoration: none;
+}
+
+.container {
+	position: relative;
+	max-width: 430px;
+	width: 100%;
+	background-color: $whiteColor;
+	border-radius: 10px;
+	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+
+	.form {
+		padding: 30px;
+
+		.title {
+			position: relative;
+			@include font-size-weight(27px, 600);
+
+			&::before {
+				content: "";
+				position: absolute;
+				left: 0;
+				bottom: 0;
+				@include width-height(30px, 3px);
+				background-color: $primaryColor;
+				border-radius: 25px;
+			}
+		}
+
+		.input-field {
+			position: relative;
+			margin-top: 30px;
+			@include width-height(100%, 50px);
+
+			input {
+				@include width-height(100%, 100%);
+				padding: 0 35px;
+				border: none;
+				outline: none;
+				font-size: $inputFontSize;
+				border-bottom: 2px solid $borderColor;
+				border-top: 2px solid transparent;
+				transition: all 0.2s ease;
+
+				&:is(:focus, :valid) {
+					border-bottom-color: $primaryColor;
+
+					& ~ i {
+						color: $primaryColor;
+					}
+				}
+			}
+
+			i {
+				position: absolute;
+				top: 50%;
+				transform: translateY(-50%);
+				color: #999;
+				font-size: 23px;
+
+				&.icon {
+					left: 0;
+				}
+
+				&.toggle-pwd {
+					right: 0;
+					cursor: pointer;
+					padding: 0 10px;
+				}
+			}
+		}
+
+		.checkbox-text {
+			@include flex-center-space-between;
+			margin-top: 20px;
+
+			.checkbox-content {
+				display: flex;
+				align-items: center;
+
+				input {
+					margin: 0 8px 0 4px;
+					accent-color: $primaryColor;
+				}
+			}
+		}
+
+		.right {
+			justify-content: end;
+		}
+
+		a {
+			&:hover {
+				text-decoration: underline;
+			}
+
+			&.text {
+				color: $primaryColor;
+			}
+		}
+
+		.text {
+			color: #333;
+			font-size: 14px;
+		}
+
+		.button {
+			input {
+				border: none;
+				color: $whiteColor;
+				letter-spacing: 1px;
+				@include font-size-weight($buttonFontSize, 500);
+				border-radius: 6px;
+				background-color: $primaryColor;
+				cursor: pointer;
+				transition: all 0.3s ease;
+
+				&:hover {
+					background-color: #d867cf;
+				}
+			}
+		}
+
+		.signup-link-field {
+			margin-top: 30px;
+			text-align: center;
+		}
+	}
+
+	img {
+		object-fit: cover;
+		border-radius: 50%;
+	}
+
+	.error-message {
+		display: none;
+		margin-top: 10px;
+		color: red;
+	}
+
+	.server-error-msg {
+		padding: 1em;
+		background-color: #f8d7da;
+		color: #721c24;
+		border-radius: 10px;
+		margin-top: 30px;
+		text-align: center;
+	}
+
+	@import "users";
+	@import "chat";
+}
+
+@import "responsive";

@@ -1,0 +1,60 @@
+<div class="container">
+	<section class="users">
+		<header>
+			<div class="content">
+				<img src="/img/user.png" alt="" />
+				<div class="details">
+					<span><%= name %></span>
+					<p>Active now</p>
+				</div>
+			</div>
+			<a href="/account/logout" class="logout text">Logout</a>
+		</header>
+		<div class="search">
+			<span class="text">Select a user to start chat</span>
+			<input
+				type="text"
+				name="search-name"
+				id="search"
+				placeholder="Enter name to search"
+			/>
+			<button><i class="uil uil-search"></i></button>
+		</div>
+		<div class="users-list">
+			<% if (accounts) { %> <% accounts.forEach(account => { %>
+			<a href="/chat/<%= account._id %>" class="text" id="<%= account._id %>">
+				<div class="content">
+					<img src="/img/user.png" alt="" />
+					<div class="details">
+						<span><%= account.name %></span>
+						<% let chat = getChatById(chats, account._id) %> <% if (chat) { %>
+						<p><%= chat.message %></p>
+						<% } else { %>
+						<p>No message</p>
+						<% } %>
+					</div>
+				</div>
+				<% if (account.status === "Offline") { %>
+				<div class="status-dot" style="background-color: #ffcc70"></div>
+				<% } else { %>
+				<div class="status-dot"></div>
+				<% } %>
+			</a>
+			<% }); %> <% } %>
+		</div>
+		<input type="hidden" id="accountId" value="<%= id %>" />
+	</section>
+</div>
+<script>
+	window.onload = () => {
+		const socket = io();
+
+		socket.on("connect", () => {
+			socket.emit("login", document.getElementById("accountId").value);
+		});
+
+		socket.on("status", (account) => {
+			updateStatus(account);
+		});
+	};
+</script>

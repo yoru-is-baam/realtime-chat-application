@@ -1,0 +1,15 @@
+@mixin flex-center-space-between {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+@mixin font-size-weight($fontSize, $fontWeight) {
+	font-size: $fontSize;
+	font-weight: $fontWeight;
+}
+
+@mixin width-height($width, $height) {
+	width: $width;
+	height: $height;
+}

@@ -1,0 +1,79 @@
+<div class="container">
+	<div class="form login">
+		<span class="title">Registration</span>
+		<form
+			novalidate
+			action="/account/register"
+			method="POST"
+			id="register-form"
+		>
+			<div class="input-field">
+				<input
+					type="text"
+					name="name"
+					id="name"
+					value="<%= name %>"
+					placeholder="Enter your name"
+					required
+				/>
+				<i class="uil uil-user icon"></i>
+			</div>
+			<div class="error-message name">Please enter your name</div>
+			<div class="input-field">
+				<input
+					type="text"
+					name="email"
+					id="email"
+					value="<%= email %>"
+					placeholder="Enter your email"
+					required
+				/>
+				<i class="uil uil-envelope icon"></i>
+			</div>
+			<div class="error-message email">Please enter your email</div>
+			<div class="input-field">
+				<input
+					type="password"
+					name="password"
+					id="password"
+					value="<%= password %>"
+					placeholder="Enter your password"
+					required
+				/>
+				<i class="uil uil-lock icon"></i>
+				<i class="uil uil-eye-slash toggle-pwd"></i>
+			</div>
+			<div class="error-message pwd">Please enter your password</div>
+			<div class="input-field">
+				<input
+					type="password"
+					name="confirmPassword"
+					id="confirm-pwd"
+					value="<%= confirmPassword %>"
+					placeholder="Confirm your password"
+					required
+				/>
+				<i class="uil uil-lock icon"></i>
+				<i class="uil uil-eye-slash toggle-pwd confirm-pwd"></i>
+			</div>
+			<div class="error-message confirm-pwd">Please confirm your password</div>
+			<div class="checkbox-text right">
+				<a href="#" class="text">Forgot password?</a>
+			</div>
+			<% if (error) { %>
+			<div class="server-error-msg">
+				<p><%= error %></p>
+			</div>
+			<% } %>
+			<div class="input-field button">
+				<input type="submit" value="Register" id="btn-register" required />
+			</div>
+			<div class="signup-link-field">
+				<span class="text">
+					Already have account?
+					<a href="/account/login" class="text signup-link-text">Login</a>
+				</span>
+			</div>
+		</form>
+	</div>
+</div>
