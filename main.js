@@ -9,7 +9,7 @@ const path = require("path");
 
 require("dotenv").config();
 
-const { SERVER_HOST, DB_HOST, DATABASE, COOKIE_SECRET } = process.env;
+const { COOKIE_SECRET, MONGODB_URI } = process.env;
 const PORT = process.env.PORT || 8080;
 
 const AccountRouter = require("./routers/AccountRouter");
@@ -59,8 +59,8 @@ app.use(function (err, req, res, next) {
 
 mongoose
 	.set("strictQuery", false)
-	.connect(`mongodb://${DB_HOST}/${DATABASE}`)
+	.connect(MONGODB_URI)
 	.then(() =>
-		server.listen(PORT, () => console.log(`http://${SERVER_HOST}:${PORT}`))
+		server.listen(PORT, () => console.log(`Server is listening at ${PORT}`))
 	)
 	.catch(() => console.log("Connect error!"));
